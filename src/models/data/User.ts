@@ -68,6 +68,7 @@ export class User {
 		this.createdAt = user.legacy.created_at;
 		this.description = user.legacy.description.length ? user.legacy.description : undefined;
 		// @ts-expect-error - missing field `followed_by`
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 		this.isFollowed = user.legacy.followed_by ?? false;
 		this.isFollowing = user.legacy.following;
 		this.isVerified = user.is_blue_verified;
