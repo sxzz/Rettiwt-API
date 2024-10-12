@@ -28,6 +28,12 @@ export class User {
 	/** The rest id of the user. */
 	public id: string;
 
+	/** Whether authenticated user is followed by the user or not. */
+	public isFollowed: boolean;
+
+	/** Whether authenticated user is following the user or not. */
+	public isFollowing: boolean;
+
 	/** Whether the account is verified or not. */
 	public isVerified: boolean;
 
@@ -61,6 +67,8 @@ export class User {
 		this.fullName = user.legacy.name;
 		this.createdAt = user.legacy.created_at;
 		this.description = user.legacy.description.length ? user.legacy.description : undefined;
+		this.isFollowed = user.legacy.followed_by ?? false;
+		this.isFollowing = user.legacy.following;
 		this.isVerified = user.is_blue_verified;
 		this.likeCount = user.legacy.favourites_count;
 		this.followersCount = user.legacy.followers_count;
